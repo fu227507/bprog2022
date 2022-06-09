@@ -1,0 +1,407 @@
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kanonh/bprog2022/.ghci
+2022-05-19 15:41:20.167030709
+>>> 1+3
+4
+2022-05-19 15:54:15.596420509
+>>> 1+2*4
+9
+2022-05-19 15:54:32.849025945
+>>> 2/6
+0.3333333333333333
+2022-05-19 15:54:59.494486141
+>>> 4/10
+0.4
+2022-05-19 15:55:17.225703798
+>>> 2/5
+0.4
+2022-05-19 15:55:24.209553862
+>>> 5-4-8+1
+-6
+2022-05-19 15:55:37.332137957
+>>> -6+6
+0
+2022-05-19 15:55:51.787131664
+>>> 1+2+3+4+5+6+7+8+9+10
+55
+2022-05-19 15:56:29.053715161
+>>> sqrt 4
+2.0
+2022-05-19 15:59:00.208653864
+>>> sqrt 99
+9.9498743710662
+2022-05-19 15:59:16.683459896
+>>> sqrt 2
+1.4142135623730951
+2022-05-19 15:59:55.134184948
+>>> double 3
+
+<interactive>:12:1: error: Variable not in scope: double :: t0 -> t
+2022-05-19 16:02:31.075881795
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kanonh/bprog2022/.ghci
+2022-05-26 15:02:05.514404928
+>>> maxBound :: Int
+9223372036854775807
+2022-05-26 15:03:50.039050365
+>>> 2 ^ 63 - 1
+9223372036854775807
+2022-05-26 15:05:15.288642062
+>>> minBound :: Int
+-9223372036854775808
+2022-05-26 15:05:36.414844443
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kanonh/bprog2022/.ghci
+2022-05-26 15:26:20.630013041
+>>> :e src/first.hs
+catn: src/first.hs: openFile: does not exist (No such file or directory)
+2022-05-26 15:49:02.512203135
+>>> :l src/first.hs
+
+<no location info>: error: can't find file: src/first.hs
+Failed, no modules loaded.
+2022-05-26 15:49:02.551012377
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+
+<no location info>: error: can't find file: src/first.hs
+Failed, no modules loaded.
+2022-05-26 15:49:38.962496962
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-05-26 15:49:39.024426327
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+Ok, one module loaded.
+2022-05-26 15:55:55.110723317
+>>> double 3
+6
+2022-05-26 15:56:18.495956151
+>>> double 1 + 3
+5
+2022-05-26 15:56:50.720335629
+>>> double (1 + 3)
+8
+2022-05-26 15:57:19.415187139
+>>> :q
+Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kanonh/bprog2022/.ghci
+2022-06-09 14:55:04.350942799
+>>> 2 + 3 * 4
+14
+2022-06-09 14:58:11.653907043
+>>> (2 + 3) * 4
+20
+2022-06-09 15:00:14.692578713
+>>> :i sqrt
+type Floating :: * -> Constraint
+class Fractional a => Floating a where
+  ...
+  sqrt :: a -> a
+  ...
+  	-- Defined in ‘GHC.Float’
+2022-06-09 15:00:45.239492417
+>>> sqrt (3 ^ 2 + 4 ^ 2)
+5.0
+2022-06-09 15:03:26.670753214
+>>> sqrt (25 :: int)
+
+<interactive>:5:7: error:
+    • Could not deduce (Num int) arising from the literal ‘25’
+      from the context: Floating a
+        bound by the inferred type of it :: Floating a => a
+        at <interactive>:5:1-16
+      Possible fix:
+        add (Num int) to the context of
+          an expression type signature:
+            forall int. int
+    • In the first argument of ‘sqrt’, namely ‘(25 :: int)’
+      In the expression: sqrt (25 :: int)
+      In an equation for ‘it’: it = sqrt (25 :: int)
+2022-06-09 15:08:20.093213577
+>>> sqrt (25 :: double)
+
+<interactive>:6:7: error:
+    • Could not deduce (Num double) arising from the literal ‘25’
+      from the context: Floating a
+        bound by the inferred type of it :: Floating a => a
+        at <interactive>:6:1-19
+      Possible fix:
+        add (Num double) to the context of
+          an expression type signature:
+            forall double. double
+    • In the first argument of ‘sqrt’, namely ‘(25 :: double)’
+      In the expression: sqrt (25 :: double)
+      In an equation for ‘it’: it = sqrt (25 :: double)
+2022-06-09 15:09:38.961254351
+>>> sqrt (25 :: Double)
+5.0
+2022-06-09 15:10:12.732535502
+>>> sqrt 25
+5.0
+2022-06-09 15:10:28.230951464
+>>> hoge 25 :: int
+
+<interactive>:9:1: error: Variable not in scope: hoge :: t0 -> int1
+2022-06-09 15:13:25.295417127
+>>> hoge 25 :: Int
+
+<interactive>:10:1: error: Variable not in scope: hoge :: t0 -> Int
+2022-06-09 15:15:24.64472839
+>>> head [1,2,3]
+1
+2022-06-09 15:47:22.113051449
+>>> head [3, 1, 4, 1, 5]
+3
+2022-06-09 15:47:48.589053114
+>>> head []
+*** Exception: Prelude.head: empty list
+2022-06-09 15:50:25.089192948
+>>> hoge = [3, 1, 4, 1, 5] :: Int
+
+<interactive>:14:8: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘[a0]’
+    • In the expression: [3, 1, 4, 1, ....] :: Int
+      In an equation for ‘hoge’: hoge = [3, 1, 4, ....] :: Int
+2022-06-09 15:50:56.628639208
+>>> hoge
+
+<interactive>:15:1: error: Variable not in scope: hoge
+2022-06-09 15:51:03.295042525
+>>> hoge = [3, 1, 4, 1, 5] :: [Int]
+2022-06-09 15:51:40.630128519
+>>> hoge
+[3,1,4,1,5]
+2022-06-09 15:51:44.229342852
+>>> head hoge
+3
+2022-06-09 15:51:57.369819605
+>>> tail hoge
+[1,4,1,5]
+2022-06-09 15:52:07.611123055
+>>> tail []
+*** Exception: Prelude.tail: empty list
+2022-06-09 15:52:43.521327216
+>>> hoge last
+
+<interactive>:21:1: error:
+    • Couldn't match expected type: ([a0] -> a0) -> t
+                  with actual type: [Int]
+    • The function ‘hoge’ is applied to one value argument,
+        but its type ‘[Int]’ has none
+      In the expression: hoge last
+      In an equation for ‘it’: it = hoge last
+    • Relevant bindings include it :: t (bound at <interactive>:21:1)
+2022-06-09 15:52:51.669447113
+>>> hoge tail
+
+<interactive>:22:1: error:
+    • Couldn't match expected type: ([a0] -> [a0]) -> t
+                  with actual type: [Int]
+    • The function ‘hoge’ is applied to one value argument,
+        but its type ‘[Int]’ has none
+      In the expression: hoge tail
+      In an equation for ‘it’: it = hoge tail
+    • Relevant bindings include it :: t (bound at <interactive>:22:1)
+2022-06-09 15:53:08.487920724
+>>> last hoge
+5
+2022-06-09 15:53:18.816325364
+>>> tail [1]
+[]
+2022-06-09 15:53:32.716649297
+>>> hoge !! 0
+3
+2022-06-09 15:55:03.424709135
+>>> hoge 2 !! hoge
+
+<interactive>:26:1: error:
+    • Couldn't match expected type: t0 -> [a]
+                  with actual type: [Int]
+    • The function ‘hoge’ is applied to one value argument,
+        but its type ‘[Int]’ has none
+      In the first argument of ‘(!!)’, namely ‘hoge 2’
+      In the expression: hoge 2 !! hoge
+    • Relevant bindings include it :: a (bound at <interactive>:26:1)
+
+<interactive>:26:11: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘[Int]’
+    • In the second argument of ‘(!!)’, namely ‘hoge’
+      In the expression: hoge 2 !! hoge
+      In an equation for ‘it’: it = hoge 2 !! hoge
+2022-06-09 15:55:28.213394982
+>>> hoge 2 !! hoge
+
+<interactive>:27:1: error:
+    • Couldn't match expected type: t0 -> [a]
+                  with actual type: [Int]
+    • The function ‘hoge’ is applied to one value argument,
+        but its type ‘[Int]’ has none
+      In the first argument of ‘(!!)’, namely ‘hoge 2’
+      In the expression: hoge 2 !! hoge
+    • Relevant bindings include it :: a (bound at <interactive>:27:1)
+
+<interactive>:27:11: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘[Int]’
+    • In the second argument of ‘(!!)’, namely ‘hoge’
+      In the expression: hoge 2 !! hoge
+      In an equation for ‘it’: it = hoge 2 !! hoge
+2022-06-09 15:55:48.939046466
+>>> hoge 2 !!
+
+<interactive>:28:10: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+2022-06-09 15:56:06.667477814
+>>> hoge !! 2
+4
+2022-06-09 15:56:20.887679317
+>>> take 3 hoge
+[3,1,4]
+2022-06-09 15:56:30.167445769
+>>> dorop 3 hoge
+
+<interactive>:31:1: error:
+    • Variable not in scope: dorop :: t0 -> [Int] -> t
+    • Perhaps you meant ‘drop’ (imported from Prelude)
+2022-06-09 15:57:31.993040228
+>>> drop 3 hoge
+[1,5]
+2022-06-09 15:57:41.038702466
+>>> hoge 5
+
+<interactive>:33:1: error:
+    • Couldn't match expected type: t0 -> t
+                  with actual type: [Int]
+    • The function ‘hoge’ is applied to one value argument,
+        but its type ‘[Int]’ has none
+      In the expression: hoge 5
+      In an equation for ‘it’: it = hoge 5
+    • Relevant bindings include it :: t (bound at <interactive>:33:1)
+2022-06-09 15:58:18.091766179
+>>> hoge !! 5
+*** Exception: Prelude.!!: index too large
+2022-06-09 15:58:55.314945648
+>>> take 10 hoge
+[3,1,4,1,5]
+2022-06-09 15:59:20.161071903
+>>> drop 10 hoge
+[]
+2022-06-09 15:59:51.729614015
+>>> length hoge
+5
+2022-06-09 16:01:49.57716578
+>>> length []
+0
+2022-06-09 16:02:02.989372677
+>>> sun hoge
+
+<interactive>:39:1: error:
+    • Variable not in scope: sun :: [Int] -> t
+    • Perhaps you meant one of these:
+        ‘sum’ (imported from Prelude), ‘sin’ (imported from Prelude)
+2022-06-09 16:02:10.218818564
+>>> sum hoge
+14
+2022-06-09 16:02:22.177542175
+>>> product hoge
+60
+2022-06-09 16:02:34.548874766
+>>> hoge ++ hoge
+[3,1,4,1,5,3,1,4,1,5]
+2022-06-09 16:04:47.751003908
+>>> reverse hoge
+[5,1,4,1,3]
+2022-06-09 16:05:37.932137503
+>>> lode src/first.ha
+
+<interactive>:44:1: error:
+    Variable not in scope: lode :: t0 -> a -> c
+
+<interactive>:44:6: error: Variable not in scope: src
+
+<interactive>:44:10: error: Variable not in scope: first :: b0 -> c
+
+<interactive>:44:16: error: Variable not in scope: ha :: a -> b0
+2022-06-09 16:08:20.640844233
+>>> lode src/first.hs
+
+<interactive>:45:1: error:
+    Variable not in scope: lode :: t0 -> a -> c
+
+<interactive>:45:6: error: Variable not in scope: src
+
+<interactive>:45:10: error: Variable not in scope: first :: b0 -> c
+
+<interactive>:45:16: error: Variable not in scope: hs :: a -> b0
+2022-06-09 16:08:24.782848779
+>>> :lode src/first.hs
+unknown command ':lode'
+use :? for help.
+2022-06-09 16:08:37.053498979
+>>> :e src/first.hs
+catn: src/first.hs: openFile: does not exist (No such file or directory)
+2022-06-09 16:08:59.854771284
+>>> :load src/first.hs
+
+<no location info>: error: can't find file: src/first.hs
+Failed, no modules loaded.
+2022-06-09 16:08:59.888414401
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+
+<no location info>: error: can't find file: src/first.hs
+Failed, no modules loaded.
+2022-06-09 16:09:49.249620714
+>>> :load src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-09 16:09:49.349248517
+>>> double 3 + 3
+9
+2022-06-09 16:10:33.899298557
+>>> double (3 + 3)
+12
+2022-06-09 16:11:11.935125063
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-09 16:14:37.144880338
+>>> quadruple 2
+8
+2022-06-09 16:15:04.82194041
+>>> quit
+
+<interactive>:55:1: error:
+    • Variable not in scope: quit
+    • Perhaps you meant ‘quot’ (imported from Prelude)
+2022-06-09 16:15:23.316269391
+>>> git add .
+
+<interactive>:56:10: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+2022-06-09 16:15:35.279756936
+>>> git add .
+
+<interactive>:57:10: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+2022-06-09 16:16:34.092741725
+>>> :quit
+Leaving GHCi.
