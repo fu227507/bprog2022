@@ -405,3 +405,160 @@ Ok, one module loaded.
 2022-06-09 16:16:34.092741725
 >>> :quit
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kanonh/bprog2022/.ghci
+2022-06-16 15:02:13.278194443
+>>> take 3 [3,1,4,1,5]
+[3,1,4]
+2022-06-16 15:04:31.525520559
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+Ok, no modules loaded.
+2022-06-16 15:12:20.301954156
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-16 15:12:20.388273589
+>>> [1 of 1] Compiling First
+
+<interactive>:4:4: error: parse error on input ‘of’
+2022-06-16 15:13:01.614131013
+>>> [1 of  1] Compiling First
+
+<interactive>:5:4: error: parse error on input ‘of’
+2022-06-16 15:14:04.143622707
+>>> double
+
+<interactive>:6:1: error:
+    • No instance for (Show (Int -> Int)) arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+2022-06-16 15:14:22.375604869
+>>> take (double 2) [1,2,3,4,5]
+[1,2,3,4]
+2022-06-16 15:15:40.678149951
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1 .. n]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-16 15:21:12.894434047
+>>> factorial 3
+6
+2022-06-16 15:22:58.996038105
+>>> factorial 4
+24
+2022-06-16 15:23:19.39915969
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1 .. n]
+Ok, one module loaded.
+2022-06-16 15:30:42.050897113
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1 .. n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int
+  16  ave xs = div (sum xs)(length xs)
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:13:14: error:
+    • Couldn't match expected type ‘Int’ with actual type ‘[Int]’
+    • In the expression: xs `div` length xs
+      In an equation for ‘average’: average xs = xs `div` length xs
+   |
+13 | average xs = xs `div` length xs
+   |              ^^^^^^^^^^^^^^^^^^
+
+src/First.hs:13:23: error:
+    • Couldn't match expected type ‘[Int]’ with actual type ‘Int’
+    • In the second argument of ‘div’, namely ‘length xs’
+      In the expression: xs `div` length xs
+      In an equation for ‘average’: average xs = xs `div` length xs
+   |
+13 | average xs = xs `div` length xs
+   |                       ^^^^^^^^^
+Failed, no modules loaded.
+2022-06-16 15:38:27.42153369
+>>> average hoge
+
+<interactive>:13:1: error:
+    Variable not in scope: average :: t0 -> t
+
+<interactive>:13:9: error: Variable not in scope: hoge
+2022-06-16 15:38:47.454049121
+>>> average [1,2,3,4,5]
+
+<interactive>:14:1: error:
+    Variable not in scope: average :: [a0] -> t
+2022-06-16 15:39:05.103988082
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1 .. n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int
+  16  ave xs = div (sum xs)(length xs)
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-16 15:39:38.666735578
+>>> average [1,2,3,4,5]
+3
+2022-06-16 15:39:42.938886869
+>>> :t take 3 [1,2,3,4,5]
+take 3 [1,2,3,4,5] :: Num a => [a]
+2022-06-16 15:54:00.489686652
+>>> init [1 .. 5]
+[1,2,3,4]
+2022-06-16 16:07:04.18286301
+>>> myinit [1 .. 5]
+
+<interactive>:19:1: error:
+    • Variable not in scope: myinit :: [a0] -> t
+    • Perhaps you meant ‘init’ (imported from Prelude)
+2022-06-16 16:14:46.965297338
+>>> :q
+Leaving GHCi.
