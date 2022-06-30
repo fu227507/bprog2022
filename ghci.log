@@ -562,3 +562,220 @@ take 3 [1,2,3,4,5] :: Num a => [a]
 2022-06-16 16:14:46.965297338
 >>> :q
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kanonh/bprog2022/.ghci
+2022-06-23 14:56:14.391489905
+>>> :i Num
+type Num :: * -> Constraint
+class Num a where
+  (+) :: a -> a -> a
+  (-) :: a -> a -> a
+  (*) :: a -> a -> a
+  negate :: a -> a
+  abs :: a -> a
+  signum :: a -> a
+  fromInteger :: Integer -> a
+  {-# MINIMAL (+), (*), abs, signum, fromInteger, (negate | (-)) #-}
+  	-- Defined in ‘GHC.Num’
+instance Num NominalDiffTime
+  -- Defined in ‘time-1.9.3:Data.Time.Clock.Internal.NominalDiffTime’
+instance Num DiffTime
+  -- Defined in ‘time-1.9.3:Data.Time.Clock.Internal.DiffTime’
+instance Num Word -- Defined in ‘GHC.Num’
+instance Num Integer -- Defined in ‘GHC.Num’
+instance Num Int -- Defined in ‘GHC.Num’
+instance Num Float -- Defined in ‘GHC.Float’
+instance Num Double -- Defined in ‘GHC.Float’
+2022-06-23 14:56:44.049073079
+>>> 1 == 2
+False
+2022-06-23 15:06:16.612659838
+>>> 1 <= 2
+True
+2022-06-23 15:06:28.576304558
+>>> 1 < 1
+False
+2022-06-23 15:06:47.376752074
+>>> 1 < 2
+True
+2022-06-23 15:07:05.574559804
+>>> 1 >= 2
+False
+2022-06-23 15:07:19.309953508
+>>> a > b
+
+<interactive>:7:1: error: Variable not in scope: a
+
+<interactive>:7:5: error: Variable not in scope: b
+2022-06-23 15:07:49.709503861
+>>> a >= b
+
+<interactive>:8:1: error: Variable not in scope: a
+
+<interactive>:8:6: error: Variable not in scope: b
+2022-06-23 15:08:22.764830414
+>>> 'a' < 'B'
+False
+2022-06-23 15:11:50.760212993
+>>> 'ab' < 'b'
+
+<interactive>:10:1: error:
+    • Syntax error on 'ab'
+      Perhaps you intended to use TemplateHaskell or TemplateHaskellQuotes
+    • In the Template Haskell quotation 'ab'
+2022-06-23 15:12:59.500286318
+>>> 1 /= 2
+True
+2022-06-23 15:16:35.834205095
+>>> 1 /= 1
+False
+2022-06-23 15:16:58.211024186
+>>> :i abs
+type Num :: * -> Constraint
+class Num a where
+  ...
+  abs :: a -> a
+  ...
+  	-- Defined in ‘GHC.Num’
+2022-06-23 15:30:28.302152807
+>>> abs
+
+<interactive>:14:1: error:
+    • No instance for (Show (Integer -> Integer))
+        arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+2022-06-23 15:30:50.417298972
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kanonh/bprog2022/.ghci
+2022-06-23 15:32:21.106647383
+>>> abs
+
+<interactive>:1:1: error:
+    • No instance for (Show (Integer -> Integer))
+        arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+2022-06-23 15:32:41.787944586
+>>> abs (-234)
+234
+2022-06-23 15:34:47.317484414
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/kanonh/bprog2022/.ghci
+2022-06-30 14:56:19.037746224
+>>> [ x ^ 2 | x <- [1 .. 5] ]
+[1,4,9,16,25]
+2022-06-30 15:00:29.301475136
+>>> map (^2) [1..5]
+[1,4,9,16,25]
+2022-06-30 15:06:15.268873724
+>>> [ x * 2 | x <- [1 .. 5] ]
+[2,4,6,8,10]
+2022-06-30 15:11:52.202461834
+>>> [ x `div` 2  | x <- [1 .. 5] ]
+[0,1,1,2,2]
+2022-06-30 15:13:07.875694317
+>>> [ x `divMod` 2  | x <- [1 .. 5] ]
+[(0,1),(1,0),(1,1),(2,0),(2,1)]
+2022-06-30 15:15:22.302145568
+>>> [ (x, y) | x <- "a,b,c", y <- [4,5]]
+[('a',4),('a',5),(',',4),(',',5),('b',4),('b',5),(',',4),(',',5),('c',4),('c',5)]
+2022-06-30 15:20:43.386083182
+>>> [ (x, y) | x <- "abc", y <- [4,5]]
+[('a',4),('a',5),('b',4),('b',5),('c',4),('c',5)]
+2022-06-30 15:21:23.892002132
+>>> [ (x, y) | y <- [4,5], x <- "abc" ]
+[('a',4),('b',4),('c',4),('a',5),('b',5),('c',5)]
+2022-06-30 15:22:03.620256797
+>>> ls
+
+<interactive>:9:1: error: Variable not in scope: ls
+2022-06-30 15:27:37.785767071
+>>> load
+
+<interactive>:10:1: error: Variable not in scope: load
+2022-06-30 15:28:55.771008346
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1 .. n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int
+  16  ave xs = div (sum xs)(length xs)
+  17  
+  18  myinit :: [a] -> [a]
+  19  myinit (x:[]) = []
+  20  myinit (x:xs) = x : (init xs)
+  21  
+  22  myconcat :: [[a]] -> [a]
+  23  myconcat xss = [ x | xs <- xss, x <- xs ]
+Ok, no modules loaded.
+2022-06-30 15:29:36.415217735
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-30 15:29:36.500730438
+>>> myconcat[[1,2,3],[4,5],[6,7,8,9]]
+[1,2,3,4,5,6,7,8,9]
+2022-06-30 15:47:38.084657115
+>>> [ 1 | _ <- [1 .. 5] ]
+[1,1,1,1,1]
+2022-06-30 15:48:17.554725719
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = double (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1 .. n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int
+  16  ave xs = div (sum xs)(length xs)
+  17  
+  18  myinit :: [a] -> [a]
+  19  myinit (x:[]) = []
+  20  myinit (x:xs) = x : (init xs)
+  21  
+  22  myconcat :: [[a]] -> [a]
+  23  myconcat xss = [ x | xs <- xss, x <- xs ]
+  24  
+  25  mylength :: [a] -> Int
+  26  mylength xs = sum [ 1 | _ <- xs ]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-30 15:50:26.963050321
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-30 15:50:27.065976492
+>>> mylength ['a' .. 'z']
+26
+2022-06-30 15:51:03.40486264
+>>> ['a' .. 'z']
+"abcdefghijklmnopqrstuvwxyz"
+2022-06-30 15:51:20.294238135
+>>> ['あ' .. 'ん']
+"\12354\12355\12356\12357\12358\12359\12360\12361\12362\12363\12364\12365\12366\12367\12368\12369\12370\12371\12372\12373\12374\12375\12376\12377\12378\12379\12380\12381\12382\12383\12384\12385\12386\12387\12388\12389\12390\12391\12392\12393\12394\12395\12396\12397\12398\12399\12400\12401\12402\12403\12404\12405\12406\12407\12408\12409\12410\12411\12412\12413\12414\12415\12416\12417\12418\12419\12420\12421\12422\12423\12424\12425\12426\12427\12428\12429\12430\12431\12432\12433\12434\12435"
+2022-06-30 15:51:36.31026708
+>>> putStrLn it
+あぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをん
+2022-06-30 15:52:57.201037928
+>>> :q
+Leaving GHCi.
